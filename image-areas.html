@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <title>Prueba de conceptos SENA sobre formatos.</title>
+    </head>
+    
+    <body style="font-family: Tahoma;">
+        
+        <div id="contenedor-titulo"><h1>Reto sobre plataformas y formatos Sena</h1></div>
+        
+        <div>El reto se trata de dar clic en todos los elementos de la imagen, seg&uacute;n las pistas que se dan a continuaci&oacute;n.</div>
+        
+        <div id="contenedor-aviso"></div>
+        
+        <div id="contenedor-entrada-nombre">
+            <input type="text" id="texto-nombre" size=50 placeholder="Ingresa nombre y apellido antes de empezar.">
+            <input type="submit" value="Empezar." onclick="gestionar_nombre();">
+        </div>
+        <br>
+        
+        <div id="pregunta1">1 - Direcci&oacute;n o URL para acceder a Compromiso.</div>
+        <div id="pregunta2">2 - Usuario y contrase&ntilde;a requeridos para entrar a la plataforma compromiso, previamente asignados y/o solicitados a la organizaci&oacute;n, usando un navegador e Internet.</div>
+        <div id="pregunta3">3 - El m&oacute;dulo de documentos donde se deber&aacute; hacer clic para acceder al mapa de procesos.</div>
+        <div id="pregunta4">4 - En el mapa de procesos, hacer clic en el proceso correcto para los instructores, llevar&aacute; a una lista con los documentos a consultar y los formatos a diligenciar.</div>
+        <div id="pregunta5">5 - Es la pesta&ntilde;a para permitir descargar los documentos o formatos, usando sus nombres o enlaces respectivos.</div>
+        <div id="pregunta6">6 - Esta caja de texto se revela al dar clic en el nombre de la columna, all&iacute; se podr&aacute; buscar el documento por el nombre.</div>
+        <div id="pregunta7">7 - En una hoja este documento se registran los datos del aprendiz y el co-formador para evidenciar la etapa pr&aacute;ctica.</div>
+        <div id="pregunta8">8 - En la primera hoja de este documento se registra la regional, el centro de formaci&oacute;n, el programa y la ficha, para poder llevar a cabo la etapa pr&aacute;ctica de un aprendiz.</div>
+        <div id="pregunta9">9 - En la primera hoja de este documento se concretan y consignan las actividades que el aprendiz llevar&aacute; a cabo durante ese mes o per&iacute;odo evaluado, para su etapa pr&aacute;ctica.</div>
+        <div id="pregunta10">10 - Un formato de etapa pr&aacute;ctica debe evaluar un per&iacute;odo, que a lo sumo es de un mes, y se debe indicar si es parcial o final.</div>
+        <div id="pregunta11">11 - El primer juego de firmas de una etapa pr&aacute;ctica.</div>
+        <div id="pregunta12">12 - Junto al segundo juego de firmas de una etapa pr&aacute;ctica se puede establecer, en el &uacute;ltimo per&iacute;odo evaluado, que el aprendiz ha aprobado este importante RAP, que a su vez es competencia.</div>
+        <div id="pregunta13">13 - El t&iacute;tulo del documento donde se consigna el trabajo de un mes o m&aacute;s, para evidenciar la formaci&oacute;n y entregar a la coordinaci&oacute;n acad&eacute;mica.</div>
+        <div id="pregunta14">14 - Horas de trabajo directo es el tiempo, que en este formato indica que el instructor est&aacute; trabajando en la formaci&oacute;n de ese RAP, para ese mes o fecha establecida.</div>
+        <hr>
+        <div id="contenedor-puntos"><h3>Puntos: 0</h3></div>
+        <hr>
+        
+        <div id="contenedor-general">
+            <img src="Superimagen-1-b.jpg" alt="paisaje" usemap="#workmap" onclick="errar();">
+            
+            <map name="workmap">
+                <area shape="rect" coords="196, 2, 404, 30" alt="Computer" onclick="en_clic( '1' );">
+                <area shape="rect" coords="832, 180, 951, 287" alt="Computer" onclick="en_clic( '2' );">
+                <area shape="rect" coords="1004, 356, 1065, 415" alt="Computer" onclick="en_clic( '3' );">
+                <area shape="rect" coords="2573, 195, 2629, 257" alt="Computer" onclick="en_clic( '4' );">
+                <area shape="rect" coords="3414, 190, 3477, 215" alt="Computer" onclick="en_clic( '5' );">
+                <area shape="rect" coords="3375, 761, 3475, 788" alt="Computer" onclick="en_clic( '6' );">
+                <area shape="rect" coords="101, 766, 628, 1003" alt="Computer" onclick="en_clic( '7' );">
+                <area shape="rect" coords="99, 703, 629, 755" alt="Computer" onclick="en_clic( '8' );">
+                <area shape="rect" coords="102, 1041, 626, 1257" alt="Computer" onclick="en_clic( '9' );">
+                <area shape="rect" coords="823, 830, 1349, 861" alt="Computer" onclick="en_clic( '10' );">
+                <area shape="rect" coords="813, 671, 1351, 760" alt="Computer" onclick="en_clic( '11' );">
+                <area shape="rect" coords="1544, 1047, 2070, 1092" alt="Computer" onclick="en_clic( '12' );">
+                <area shape="rect" coords="8, 2906, 1304, 2967" alt="Computer" onclick="en_clic( '13' );">
+                <area shape="rect" coords="549, 3118, 619, 3600" alt="Computer" onclick="en_clic( '14' );">
+            </map>
+            
+            <script>
+                
+                var g_contador = 0; //para contar las preguntas respondidas.
+                var g_preguntas_respondidas = "";
+                let g_total_preguntas = 14;
+                let tmp_mensaje = "";
+                let g_nombre = "";
+                
+                //avisar( "Aprobaste el reto" );
+                
+                /**
+                 * Funci&oacute;n oyente en el evento de clic.
+                 * @param       texto       Un identificador &uacute;nico para una pregunta.
+                 */
+                function en_clic( valor )
+                {
+                    console.log( g_preguntas_respondidas.indexOf( valor ) + " " + g_preguntas_respondidas );
+                 
+                    if( g_nombre != "" )
+                    {
+                                        
+                        if( g_preguntas_respondidas.indexOf( valor + " " ) < 0 )
+                        {                        
+                            g_preguntas_respondidas += valor + " ";
+                            g_contador ++;
+                            document.getElementById( "pregunta" + valor ).style.color = "green";
+                            window.location.href = "#pregunta1"; //Salta a las preguntas para que el usuario vea cu&aacute;l se respondi&oacute;.
+                            
+                            if( g_contador >= g_total_preguntas ) //Gan&oacute;.
+                            {
+                                tmp_mensaje = "Felicitaciones " + g_nombre + ", aprobaste el reto.";
+                                window.alert( tmp_mensaje );
+                                avisar( tmp_mensaje );
+                            }
+                            
+                        }else{
+                        
+                            window.alert( "Esa pregunta ya se contest&oacute;." );                    
+                        }
+                        
+                        //console.log( "g_contador: " + g_contador );
+                        document.getElementById( "contenedor-puntos" ).innerHTML = "<h3>Puntos: " + g_contador + "</h3>";
+                        
+                    }else{
+                        
+                        window.alert( "Ingresa tu nombre para empezar." );
+                    }
+                }
+                
+                /**
+                 * En caso de dar clic fuera de las &aacute;reas permitidas, el software borrar&aacute; el tablero
+                 * de juego y obligar&aacute; al usuario a reiniciar.
+                 */
+                function errar()
+                {
+                    window.alert( "Fallaste." );
+                    document.getElementById( "contenedor-general" ).innerHTML  = "<h1>Fallaste</h1>";
+                    document.getElementById( "contenedor-general" ).innerHTML += "<h2>Recarga la p&aacute;gina y vuelve a intentarlo.</h2>";
+                }
+                
+                /**
+                 * Funci&oacute;n que coloca un mensaje grande en medio de la pantalla.
+                 */
+                function avisar( $m )
+                {
+                    document.getElementById( "contenedor-aviso" ).style.position = "absolute";
+                    document.getElementById( "contenedor-aviso" ).style.left = "100";
+                    document.getElementById( "contenedor-aviso" ).style.top = "300";
+                    document.getElementById( "contenedor-aviso" ).innerHTML = "<h1>" + $m + "</h1>";
+                }
+                
+                /**
+                 * Se encarga de gestionar el nombre
+                 */
+                function gestionar_nombre()
+                {
+                    console.log( "aaa" );
+                    
+                    let nombre = document.getElementById( "texto-nombre" ).value;
+                    
+                    if( nombre.trim() == "" )
+                    {
+                        window.alert( "Por favor ingresa tu nombre." );
+                        document.getElementById( "texto-nombre" ).value = "";
+                        
+                    }else{
+                        
+                        g_nombre = nombre;
+                        console.log( g_nombre );
+                        document.getElementById( "contenedor-entrada-nombre" ).innerHTML = "<h1>¡Puedes empezar!</h1>";
+                        window.alert( "Puedes empezar." );
+                    }
+                }
+                
+            </script>
+        </div>
+    </body>
+</html>
